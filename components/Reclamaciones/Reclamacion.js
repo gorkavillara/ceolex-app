@@ -1,6 +1,7 @@
 import { IoCaretForward } from "react-icons/io5"
+import Link from "next/link"
 
-const Reclamacion = ({ img, tipo, estado, fecha }) => {
+const Reclamacion = ({ id, img, tipo, estado, fecha }) => {
   let texto_estado = "";
   switch (estado) {
     case "documentos":
@@ -12,26 +13,31 @@ const Reclamacion = ({ img, tipo, estado, fecha }) => {
     case "exito":
       texto_estado = "Estado: Resuelto con éxito";
       break;
+    case "denegado":
+      texto_estado = "Estado: Caso denegado";
+      break;
     default:
       texto_estado = estado;
       break;
   }
   return (
-    <div className="reclamacion-activa">
-      <div className="reclamacion-image">
-        <img src={img} alt="rec-1" />
-      </div>
-      <div className="reclamacion-text">
-        <div className="reclamacion-text-titulo">{tipo}</div>
-        <div className={`reclamacion-text-estado estado-${estado}`}>
-          {texto_estado}
+    <Link href={`/reclamaciones/${id}`}>
+      <div className="reclamacion-activa">
+        <div className="reclamacion-image">
+          <img src={img} alt="rec-1" />
         </div>
-        <div className="reclamacion-text-fecha">{fecha}</div>
+        <div className="reclamacion-text">
+          <div className="reclamacion-text-titulo">{tipo}</div>
+          <div className={`reclamacion-text-estado estado-${estado}`}>
+            {texto_estado}
+          </div>
+          <div className="reclamacion-text-fecha">{fecha}</div>
+        </div>
+        <div className="reclamacion-caret">
+          <IoCaretForward />
+        </div>
       </div>
-      <div className="reclamacion-caret">
-        <IoCaretForward />
-      </div>
-    </div>
+    </Link>
   );
 };
 

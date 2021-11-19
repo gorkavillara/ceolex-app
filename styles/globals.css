@@ -256,7 +256,8 @@ button.main-button {
   color: rgb(255, 174, 0);
 }
 
-.reclamacion-text .reclamacion-text-estado.estado-documentos {
+.reclamacion-text .reclamacion-text-estado.estado-documentos,
+.reclamacion-text .reclamacion-text-estado.estado-denegado {
   color: red;
 }
 
